@@ -106,6 +106,66 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #475569; 
         }
+
+        /* App Tooltip (fast + high-contrast) */
+        @media (hover: hover) and (pointer: fine) {
+            .app-tooltip[data-tooltip] {
+                position: relative;
+            }
+
+            .app-tooltip[data-tooltip]::after {
+                content: attr(data-tooltip);
+                position: absolute;
+                left: 50%;
+                bottom: calc(100% + 10px);
+                transform: translateX(-50%) translateY(6px) scale(0.98);
+                padding: 8px 10px;
+                border-radius: 14px;
+                background: linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.92));
+                border: 1px solid rgba(148, 163, 184, 0.35);
+                box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.12), 0 18px 42px rgba(0, 0, 0, 0.55);
+                color: rgba(248, 250, 252, 0.95);
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 1;
+                white-space: nowrap;
+                opacity: 0;
+                pointer-events: none;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                transition: opacity 90ms ease-out, transform 90ms ease-out;
+                z-index: 80;
+            }
+
+            .app-tooltip[data-tooltip]::before {
+                content: "";
+                position: absolute;
+                left: 50%;
+                bottom: calc(100% + 6px);
+                width: 10px;
+                height: 10px;
+                transform: translateX(-50%) translateY(6px) rotate(45deg);
+                background: rgba(2, 6, 23, 0.92);
+                border-right: 1px solid rgba(148, 163, 184, 0.35);
+                border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 90ms ease-out, transform 90ms ease-out;
+                z-index: 79;
+            }
+
+            .app-tooltip[data-tooltip]:hover::after,
+            .app-tooltip[data-tooltip]:focus-visible::after {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0) scale(1);
+            }
+
+            .app-tooltip[data-tooltip]:hover::before,
+            .app-tooltip[data-tooltip]:focus-visible::before {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0) rotate(45deg);
+            }
+        }
     </style>
 </head>
 <body>
@@ -151,12 +211,22 @@
                 name: 'santa-hat',
                 path: '<path d="M12 48H52C52 48 48 16 32 8C16 16 12 48 12 48Z" fill="#ef4444" stroke="white" stroke-width="2"/><circle cx="52" cy="48" r="6" fill="white"/><circle cx="32" cy="6" r="6" fill="white"/><rect x="10" y="46" width="44" height="10" rx="5" fill="white"/>'
             },
-            {
-                id: 'wreath',
-                name: 'wreath',
-                path: '<circle cx="32" cy="32" r="20" fill="none" stroke="#22c55e" stroke-width="8"/><circle cx="32" cy="12" r="4" fill="#ef4444"/><circle cx="52" cy="32" r="4" fill="#ef4444"/><circle cx="32" cy="52" r="4" fill="#ef4444"/><circle cx="12" cy="32" r="4" fill="#ef4444"/><path d="M32 16L32 24" stroke="#ef4444" stroke-width="2"/>'
-            }
-        ];
+	            {
+	                id: 'wreath',
+	                name: 'wreath',
+	                path: '<circle cx="32" cy="32" r="20" fill="none" stroke="#22c55e" stroke-width="8"/><circle cx="32" cy="12" r="4" fill="#ef4444"/><circle cx="52" cy="32" r="4" fill="#ef4444"/><circle cx="32" cy="52" r="4" fill="#ef4444"/><circle cx="12" cy="32" r="4" fill="#ef4444"/><path d="M32 16L32 24" stroke="#ef4444" stroke-width="2"/>'
+	            },
+	            {
+	                id: 'reindeer',
+	                name: 'reindeer',
+		                path: '<defs><linearGradient id="fur" x1="0" y1="18" x2="0" y2="56"><stop offset="0" stop-color="#d97706"/><stop offset="1" stop-color="#a16207"/></linearGradient><linearGradient id="muzzle" x1="0" y1="34" x2="0" y2="56"><stop offset="0" stop-color="#fde68a"/><stop offset="1" stop-color="#fef3c7"/></linearGradient></defs><g fill="none" stroke="#fef3c7" stroke-width="2.2" stroke-linecap="round" opacity="0.95"><path d="M18 16C16 10 18 8 20 8C22 8 23 10 24 12C25 14 27 15 29 15"/><path d="M46 16C48 10 46 8 44 8C42 8 41 10 40 12C39 14 37 15 35 15"/></g><circle cx="32" cy="36" r="18" fill="url(#fur)" stroke="#fff" stroke-width="1.6"/><g fill="#a16207" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"><path d="M18 30L12 26L14 36Z"/><path d="M46 30L52 26L50 36Z"/></g><ellipse cx="32" cy="44" rx="12" ry="9" fill="url(#muzzle)" stroke="#fff" stroke-width="1.4"/><circle cx="26" cy="34" r="2" fill="#0f172a"><animate attributeName="r" values="2;2;0.1;2;2" keyTimes="0;0.48;0.52;0.56;1" dur="3s" repeatCount="indefinite"/></circle><circle cx="38" cy="34" r="2" fill="#0f172a"><animate attributeName="r" values="2;2;0.1;2;2" keyTimes="0;0.48;0.52;0.56;1" dur="3s" repeatCount="indefinite"/></circle><circle cx="32" cy="46" r="3.2" fill="#ef4444" stroke="#fff" stroke-width="1"><animate attributeName="r" values="3.2;3.7;3.2" dur="1.2s" repeatCount="indefinite"/></circle><circle cx="31" cy="45" r="1" fill="#fff" opacity="0.6"><animate attributeName="opacity" values="0.45;0.8;0.45" dur="1.2s" repeatCount="indefinite"/></circle><circle cx="32" cy="46" r="7" fill="#ef4444" opacity="0.15"><animate attributeName="opacity" values="0.08;0.18;0.08" dur="1.2s" repeatCount="indefinite"/></circle>'
+		            },
+	            {
+	                id: 'snowflake',
+	                name: 'snowflake',
+	                path: '<g transform-origin="32 32"><animateTransform attributeName="transform" type="rotate" values="0 32 32; 360 32 32" dur="6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.6;1;0.6" dur="2.4s" repeatCount="indefinite"/><g fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"><path d="M32 10V54"/><path d="M10 32H54"/><path d="M16 16L48 48"/><path d="M48 16L16 48"/><path d="M32 10L28 14M32 10L36 14"/><path d="M32 54L28 50M32 54L36 50"/><path d="M10 32L14 28M10 32L14 36"/><path d="M54 32L50 28M54 32L50 36"/><path d="M16 16L16 22M16 16L22 16"/><path d="M48 48L48 42M48 48L42 48"/><path d="M48 16L42 16M48 16L48 22"/><path d="M16 48L22 48M16 48L16 42"/></g><circle cx="32" cy="32" r="3" fill="#e2e8f0" opacity="0.9"/></g>'
+	            }
+	        ];
 
         // --- Component: SnowEffect ---
         const SnowEffect = () => {
@@ -255,15 +325,147 @@
             );
         };
 
+        // --- Component: UsageModal ---
+        const UsageModal = ({ isOpen, onClose, baseUrl, repoUrl }) => {
+            useEffect(() => {
+                if (!isOpen) return;
+
+                const onKeyDown = (e) => {
+                    if (e.key === 'Escape') onClose();
+                };
+
+                window.addEventListener('keydown', onKeyDown);
+                return () => window.removeEventListener('keydown', onKeyDown);
+            }, [isOpen, onClose]);
+
+            if (!isOpen) return null;
+
+            return (
+                <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+                    <div
+                        className="absolute inset-0 bg-slate-950/70 backdrop-blur-sm"
+                        onClick={onClose}
+                        aria-hidden="true"
+                    />
+                    <div className="relative w-full max-w-2xl glass-panel rounded-3xl p-6 md:p-8 border border-slate-700/50 shadow-2xl">
+                        <div className="flex items-start justify-between gap-4 mb-6">
+                            <div>
+                                <h2 className="text-xl md:text-2xl font-bold text-white">使用说明 / Quick Start</h2>
+                                <p className="text-slate-400 text-sm mt-1">
+                                    本站仅提供圣诞节主题 SVG 图标，用于装点 GitHub Profile README（不是个人主页设计/生成器）。
+                                </p>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={onClose}
+                                className="app-tooltip p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+                                aria-label="Close"
+                                data-tooltip="Close"
+                            >
+                                <i className="ph ph-x text-xl"></i>
+                            </button>
+                        </div>
+
+                        <div className="space-y-4 text-sm text-slate-300">
+                            <div className="flex gap-3">
+                                <div className="w-7 h-7 rounded-lg bg-green-500/15 text-green-300 flex items-center justify-center font-semibold shrink-0">1</div>
+                                <div>
+                                    <div className="text-white font-medium">设置图标仓库 Base URL</div>
+                                    <div className="text-slate-400">
+                                        复制时会用到该地址（默认已指向在线图标仓库）。你也可以改成自己的静态托管地址。
+                                    </div>
+                                    <div className="mt-2 flex flex-col sm:flex-row gap-2">
+                                        <a
+                                            href={baseUrl}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-slate-800/60 hover:bg-slate-700/70 border border-slate-700 text-slate-200 transition-colors"
+                                        >
+                                            <i className="ph ph-arrow-square-out"></i>
+                                            Open Base URL
+                                        </a>
+                                        <a
+                                            href={repoUrl}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-slate-800/60 hover:bg-slate-700/70 border border-slate-700 text-slate-200 transition-colors"
+                                        >
+                                            <i className="ph ph-github-logo"></i>
+                                            Browse Icons Repo
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="flex gap-3">
+                                <div className="w-7 h-7 rounded-lg bg-red-500/15 text-red-300 flex items-center justify-center font-semibold shrink-0">2</div>
+                                <div>
+                                    <div className="text-white font-medium">复制或下载</div>
+                                    <div className="text-slate-400">
+                                        每张卡片提供 Markdown / URL / HTML 复制按钮，右上角可直接下载 SVG。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="flex gap-3">
+                                <div className="w-7 h-7 rounded-lg bg-indigo-500/15 text-indigo-300 flex items-center justify-center font-semibold shrink-0">3</div>
+                                <div>
+                                    <div className="text-white font-medium">Contributor Lab（可选）</div>
+                                    <div className="text-slate-400">
+                                        粘贴你的 SVG / path 代码进行实时预览，并下载为文件。请保持 <code className="bg-slate-800/60 px-1.5 py-0.5 rounded">viewBox=&quot;0 0 64 64&quot;</code>。
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="text-xs text-slate-500">
+                                Tip: 若你直接用 <span className="text-slate-300 font-medium">file://</span> 打开页面，浏览器可能禁用剪贴板；建议使用本地服务或 HTTPS（如 GitHub Pages）。
+                            </div>
+                        </div>
+
+                        <div className="mt-6 flex justify-end">
+                            <button
+                                type="button"
+                                onClick={onClose}
+                                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-medium shadow-lg shadow-green-500/20 transition-all active:scale-95"
+                            >
+                                我知道了 / Got it
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
         // --- Component: IconCard ---
         const IconCard = ({ icon, baseUrl, onCopy }) => {
-            const svgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">${icon.path}</svg>`;
-            
-            const handleAction = (type) => {
+            const filePath = `assets/svg/${icon.name}.svg`;
+            const url = `${baseUrl.replace(/\/$/, '')}/${icon.name}.svg`;
+
+            const labelByAction = {
+                MARKDOWN: 'Markdown',
+                URL: 'URL',
+                HTML: 'HTML',
+            };
+
+            const actions = [
+                { key: 'MARKDOWN', icon: 'ph ph-code-block', title: 'Copy Markdown' },
+                { key: 'URL', icon: 'ph ph-link-simple', title: 'Copy URL' },
+                { key: 'HTML', icon: 'ph ph-code', title: 'Copy HTML' },
+                { key: 'DOWNLOAD', icon: 'ph ph-download-simple', title: 'Download SVG' },
+            ];
+
+            const handleAction = (action) => {
+                if (action === 'DOWNLOAD') {
+                    const link = document.createElement('a');
+                    link.href = filePath;
+                    link.download = `${icon.name}.svg`;
+                    link.click();
+                    onCopy('Downloaded SVG!', 'success');
+                    return;
+                }
+
                 let content = '';
-                const url = `${baseUrl.replace(/\/$/, '')}/${icon.name}.svg`;
-                
-                switch(type) {
+                switch (action) {
                     case 'MARKDOWN':
                         content = `![${icon.name}](${url})`;
                         break;
@@ -273,21 +475,22 @@
                     case 'HTML':
                         content = `<img src="${url}" alt="${icon.name}" width="64" />`;
                         break;
-                    case 'DOWNLOAD':
-                        const blob = new Blob([svgString], { type: 'image/svg+xml' });
-                        const blobUrl = URL.createObjectURL(blob);
-                        const link = document.createElement('a');
-                        link.href = blobUrl;
-                        link.download = `${icon.name}.svg`;
-                        link.click();
-                        URL.revokeObjectURL(blobUrl);
-                        onCopy('Downloaded successfully!', 'success');
-                        return; 
+                    default:
+                        return;
                 }
-                
-                navigator.clipboard.writeText(content).then(() => {
-                    onCopy(`Copied ${type} to clipboard!`, 'success');
-                });
+
+                if (!navigator.clipboard?.writeText) {
+                    onCopy('Clipboard unavailable. Try HTTPS / local server.', 'error');
+                    return;
+                }
+
+                navigator.clipboard.writeText(content)
+                    .then(() => {
+                        onCopy(`Copied ${labelByAction[action]}!`, 'success');
+                    })
+                    .catch(() => {
+                        onCopy('Clipboard unavailable. Try HTTPS / local server.', 'error');
+                    });
             };
 
             return (
@@ -296,31 +499,27 @@
                     <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-red-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     
                     {/* Icon Preview */}
-                    <div className="relative w-24 h-24 mb-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-transform duration-300 group-hover:scale-110" dangerouslySetInnerHTML={{ __html: svgString }} />
+                    <div className="relative w-24 h-24 mb-4 flex items-center justify-center drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-transform duration-300 group-hover:scale-110">
+                        <img src={filePath} alt={icon.name} className="w-16 h-16 block" loading="lazy" />
+                    </div>
                     
-                    <h3 className="relative text-white font-medium mb-4 capitalize">{icon.name.replace('-', ' ')}</h3>
+                    <h3 className="relative text-white font-medium mb-4 capitalize">{icon.name.replace(/-/g, ' ')}</h3>
                     
                     {/* Actions Grid */}
-                    <div className="relative w-full grid grid-cols-3 gap-2">
-                        {['Markdown', 'URL', 'HTML'].map((type) => (
+                    <div className="relative w-full grid grid-cols-4 gap-2">
+                        {actions.map((item) => (
                             <button
-                                key={type}
-                                onClick={() => handleAction(type.toUpperCase())}
-                                className="px-2 py-1.5 text-xs font-medium text-slate-300 bg-slate-800/50 hover:bg-slate-700/80 rounded-lg transition-colors border border-slate-700 hover:border-slate-500"
+                                key={item.key}
+                                type="button"
+                                onClick={() => handleAction(item.key)}
+                                className="app-tooltip h-10 flex items-center justify-center text-slate-300 bg-slate-800/50 hover:bg-slate-700/80 rounded-lg transition-colors border border-slate-700 hover:border-slate-500"
+                                aria-label={item.title}
+                                data-tooltip={item.title}
                             >
-                                {type}
+                                <i className={`${item.icon} text-lg`}></i>
                             </button>
                         ))}
                     </div>
-
-                    {/* Download Button (Absolute Top Right) */}
-                    <button 
-                        onClick={() => handleAction('DOWNLOAD')}
-                        className="absolute top-3 right-3 p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-full transition-all opacity-0 group-hover:opacity-100"
-                        title="Download SVG"
-                    >
-                        <i className="ph ph-download-simple text-lg"></i>
-                    </button>
                 </div>
             );
         };
@@ -331,8 +530,14 @@
             const aiPrompt = "Create a minimal, cute Christmas-themed SVG icon (64x64 viewbox). Use bold colors and simple shapes suitable for a dark background. Return only the SVG code without markdown wrapping.";
 
             const copyPrompt = () => {
-                navigator.clipboard.writeText(aiPrompt);
-                onCopy('AI Prompt copied! Paste into ChatGPT/Claude.', 'success');
+                if (!navigator.clipboard?.writeText) {
+                    onCopy('Clipboard unavailable. Try HTTPS / local server.', 'error');
+                    return;
+                }
+
+                navigator.clipboard.writeText(aiPrompt)
+                    .then(() => onCopy('AI Prompt copied! Paste into ChatGPT/Claude.', 'success'))
+                    .catch(() => onCopy('Clipboard unavailable. Try HTTPS / local server.', 'error'));
             };
 
             const downloadCustom = () => {
@@ -405,8 +610,14 @@
             const promptTemplate = 'Create a simple, flat, vector SVG icon of a [ITEM NAME], square aspect ratio, viewBox="0 0 64 64". Use bold colors like #ef4444 (red), #22c55e (green), #fff. Minimal details, optimized for small size. No background.';
 
             const handleCopy = () => {
-                navigator.clipboard.writeText(promptTemplate);
-                onCopy('Prompt Template copied!', 'success');
+                if (!navigator.clipboard?.writeText) {
+                    onCopy('Clipboard unavailable. Try HTTPS / local server.', 'error');
+                    return;
+                }
+
+                navigator.clipboard.writeText(promptTemplate)
+                    .then(() => onCopy('Prompt Template copied!', 'success'))
+                    .catch(() => onCopy('Clipboard unavailable. Try HTTPS / local server.', 'error'));
             };
 
             return (
@@ -483,7 +694,7 @@
                                         <ul className="list-disc list-inside text-slate-400 space-y-2">
                                             <li>在实验室中点击 “下载 .svg”，并给文件起个好名字（英文，例如 santa-hat.svg）。</li>
                                             <li>Fork 本仓库。</li>
-                                            <li>将下载的 SVG 文件放入 <code className="bg-slate-800 px-1 rounded text-sm text-indigo-300">icons/</code> 文件夹。</li>
+	                                            <li>将下载的 SVG 文件放入 <code className="bg-slate-800 px-1 rounded text-sm text-indigo-300">assets/svg/</code> 文件夹。</li>
                                             <li>（可选）在 index.html 的 icons 数组中添加你的图标信息（如果不熟悉代码，只需提交 SVG 文件，维护者会帮你添加）。</li>
                                             <li>提交 Pull Request！</li>
                                         </ul>
@@ -525,8 +736,11 @@
 
         // --- Main App Component ---
         const App = () => {
+            const ICONS_REPO_URL = 'https://github.com/kangchainx/christmas-readme-assets/tree/main/assets/svg';
+
             const [view, setView] = useState('home'); // 'home' | 'guide'
-            const [baseUrl, setBaseUrl] = useState('https://yourname.github.io/christmas-kit/icons/');
+            const [baseUrl, setBaseUrl] = useState('https://kangchainx.github.io/christmas-readme-assets/assets/svg/');
+            const [isUsageOpen, setIsUsageOpen] = useState(true);
             const [toast, setToast] = useState({ show: false, msg: '', type: 'success' });
 
             const showToast = (msg, type = 'success') => {
@@ -551,43 +765,78 @@
                     {/* Main Content */}
                     <div className="relative z-10 max-w-6xl mx-auto px-4 pt-12 md:pt-20">
                         
-                        {view === 'home' ? (
-                            <>
-                                {/* Header */}
-                                <div className="text-center mb-16 animate-slideIn">
+	                        {view === 'home' ? (
+	                            <>
+	                                {/* Header */}
+	                                <div className="text-center mb-16 animate-slideIn">
                                     <div className="inline-block text-6xl mb-4 animate-float cursor-default select-none filter drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
                                         🎄
                                     </div>
                                     <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-xl tracking-tight">
                                         GitHub <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-600">Christmas</span> Kit
                                     </h1>
-                                    <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
-                                        Decorate your README with festive, open-source SVG icons. 
-                                        High performance, dark-mode ready, and crafted for developers.
-                                    </p>
-                                    
-                                    <div className="flex justify-center gap-3">
-                                        {['Open Source', 'Vector SVG', 'Dark Mode'].map((tag) => (
-                                            <span key={tag} className="px-3 py-1 rounded-full glass-panel text-xs text-slate-300 border border-slate-700/50">
+	                                    <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+	                                        Christmas-only SVG icons for decorating your GitHub Profile README.
+	                                        This kit does <span className="text-white/90 font-medium">not</span> generate full profile designs or README layouts.
+	                                    </p>
+	                                    
+	                                    <div className="flex justify-center gap-3">
+	                                        {['Open Source', 'Vector SVG', 'Dark Mode'].map((tag) => (
+	                                            <span key={tag} className="px-3 py-1 rounded-full glass-panel text-xs text-slate-300 border border-slate-700/50">
                                                 {tag}
                                             </span>
                                         ))}
                                     </div>
                                 </div>
 
-                                {/* Configuration Bar */}
-                                <div className="glass-panel p-2 rounded-2xl flex flex-col md:flex-row items-center gap-2 max-w-2xl mx-auto mb-16 shadow-lg animate-slideIn">
-                                    <div className="px-4 py-2 text-slate-400 text-sm font-medium whitespace-nowrap">
-                                        <i className="ph ph-link mr-2 align-middle"></i>Base URL
-                                    </div>
-                                    <input 
-                                        type="text" 
-                                        value={baseUrl}
-                                        onChange={(e) => setBaseUrl(e.target.value)}
-                                        className="flex-1 bg-transparent border-none text-white focus:ring-0 placeholder-slate-600 text-sm w-full"
-                                        placeholder="https://..."
-                                    />
-                                </div>
+	                                {/* Configuration Bar */}
+	                                <div className="glass-panel p-3 rounded-2xl max-w-3xl mx-auto mb-16 shadow-lg animate-slideIn">
+	                                    <div className="flex flex-col md:flex-row md:items-center gap-2">
+	                                        <div className="px-3 py-2 text-slate-400 text-sm font-medium whitespace-nowrap flex items-center gap-2">
+	                                            <i className="ph ph-link"></i>
+	                                            Icon Repository Base URL
+	                                        </div>
+	                                        <div className="flex-1 flex items-center gap-2 w-full">
+	                                            <input 
+	                                                type="text" 
+	                                                value={baseUrl}
+	                                                onChange={(e) => setBaseUrl(e.target.value)}
+	                                                className="flex-1 bg-transparent border-none text-white focus:ring-0 placeholder-slate-600 text-sm w-full"
+	                                                placeholder="https://.../assets/svg/"
+	                                            />
+	                                            <button
+	                                                type="button"
+	                                                onClick={() => window.open(baseUrl, '_blank', 'noopener,noreferrer')}
+	                                                className="app-tooltip p-2 text-slate-300 bg-slate-800/50 hover:bg-slate-700/80 rounded-lg border border-slate-700 hover:border-slate-500 transition-colors"
+	                                                aria-label="Open Base URL"
+	                                                data-tooltip="Open Base URL"
+	                                            >
+	                                                <i className="ph ph-arrow-square-out text-lg"></i>
+	                                            </button>
+	                                            <button
+	                                                type="button"
+	                                                onClick={() => window.open(ICONS_REPO_URL, '_blank', 'noopener,noreferrer')}
+	                                                className="app-tooltip p-2 text-slate-300 bg-slate-800/50 hover:bg-slate-700/80 rounded-lg border border-slate-700 hover:border-slate-500 transition-colors"
+	                                                aria-label="Open Icons Repo"
+	                                                data-tooltip="Open Icons Repo"
+	                                            >
+	                                                <i className="ph ph-github-logo text-lg"></i>
+	                                            </button>
+	                                            <button
+	                                                type="button"
+	                                                onClick={() => setIsUsageOpen(true)}
+	                                                className="app-tooltip p-2 text-slate-300 bg-slate-800/50 hover:bg-slate-700/80 rounded-lg border border-slate-700 hover:border-slate-500 transition-colors"
+	                                                aria-label="How to use"
+	                                                data-tooltip="How to use"
+	                                            >
+	                                                <i className="ph ph-info text-lg"></i>
+	                                            </button>
+	                                        </div>
+	                                    </div>
+	                                    <div className="px-3 pt-2 text-xs text-slate-500">
+	                                        Used for Markdown/URL/HTML copies. Source icons live in <span className="text-slate-300 font-medium">assets/svg/</span>.
+	                                    </div>
+	                                </div>
 
                                 {/* Icon Grid */}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16 animate-slideIn">
@@ -620,8 +869,12 @@
                                     </div>
 
                                     <div className="flex justify-center gap-4 text-xl">
-                                        <a href="#" className="hover:text-white transition-colors"><i className="ph ph-github-logo"></i></a>
-                                        <a href="#" className="hover:text-sky-400 transition-colors"><i className="ph ph-twitter-logo"></i></a>
+                                        <a href="https://github.com/kangchainx/christmas-readme-assets" target="_blank" rel="noreferrer" className="hover:text-white transition-colors" aria-label="GitHub Repository">
+                                            <i className="ph ph-github-logo"></i>
+                                        </a>
+                                        <a href="https://kangchainx.github.io/christmas-readme-assets/" target="_blank" rel="noreferrer" className="hover:text-sky-400 transition-colors" aria-label="Live Demo">
+                                            <i className="ph ph-globe"></i>
+                                        </a>
                                     </div>
                                 </footer>
                             </>
@@ -630,10 +883,16 @@
                         )}
                     </div>
 
-                    <Toast isVisible={toast.show} message={toast.msg} type={toast.type} />
-                </div>
-            );
-        };
+	                    <UsageModal
+	                        isOpen={isUsageOpen}
+	                        onClose={() => setIsUsageOpen(false)}
+	                        baseUrl={baseUrl}
+	                        repoUrl={ICONS_REPO_URL}
+	                    />
+	                    <Toast isVisible={toast.show} message={toast.msg} type={toast.type} />
+	                </div>
+	            );
+	        };
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
