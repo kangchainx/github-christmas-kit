@@ -54,7 +54,7 @@ npm run dev
 1. 设计一个 SVG 图标（小尺寸也要清晰），并包含循环动画（`repeatCount="indefinite"`）。
 2. 将文件放入 `assets/svg/`（文件名使用 kebab-case，例如 `santa-hat.svg`）。
 3. 提交 Pull Request。
-   - 可选：在 `index.html` 的 `CHRISTMAS_ICONS` 数组中补充你的图标信息。
+   - 可选：在 `index.html` 的 `assets/icons.json`（图标清单）中补充你的图标信息。
 
 小提示：你可以先在网站底部的「Contributor Lab / 贡献者实验室」里粘贴 SVG 代码实时预览，再提交 PR。
 

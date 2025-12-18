@@ -54,7 +54,7 @@ npm run dev
 1. Create an SVG icon (keep it readable at small sizes), with a looping animation (`repeatCount="indefinite"`).
 2. Put it into `assets/svg/` (kebab-case filename, e.g. `santa-hat.svg`).
 3. Open a Pull Request.
-   - Optional: add the icon entry to the `CHRISTMAS_ICONS` array in `index.html`.
+   - Optional: add the icon entry to the `assets/icons.json` (icon manifest).
 
 Tip: You can preview your SVG in the website’s “Contributor Lab” section before submitting.
 
