@@ -1,0 +1,346 @@
+[
+  {
+    "id": "tree",
+    "name": "christmas-tree",
+    "labels": {
+      "en": "Christmas Tree",
+      "zh": "圣诞树"
+    }
+  },
+  {
+    "id": "gift",
+    "name": "gift-box",
+    "labels": {
+      "en": "Gift Box",
+      "zh": "礼物盒"
+    }
+  },
+  {
+    "id": "snowman",
+    "name": "snowman",
+    "labels": {
+      "en": "Snowman",
+      "zh": "雪人"
+    }
+  },
+  {
+    "id": "stocking",
+    "name": "red-stocking",
+    "labels": {
+      "en": "Red Stocking",
+      "zh": "圣诞袜"
+    }
+  },
+  {
+    "id": "bell",
+    "name": "jingle-bell",
+    "labels": {
+      "en": "Jingle Bell",
+      "zh": "铃铛"
+    }
+  },
+  {
+    "id": "candy",
+    "name": "candy-cane",
+    "labels": {
+      "en": "Candy Cane",
+      "zh": "拐杖糖"
+    }
+  },
+  {
+    "id": "hat",
+    "name": "santa-hat",
+    "labels": {
+      "en": "Santa Hat",
+      "zh": "圣诞帽"
+    }
+  },
+  {
+    "id": "wreath",
+    "name": "wreath",
+    "labels": {
+      "en": "Wreath",
+      "zh": "花环"
+    }
+  },
+  {
+    "id": "reindeer",
+    "name": "reindeer",
+    "labels": {
+      "en": "Reindeer",
+      "zh": "驯鹿"
+    }
+  },
+  {
+    "id": "snowflake",
+    "name": "snowflake",
+    "labels": {
+      "en": "Snowflake",
+      "zh": "雪花"
+    }
+  },
+  {
+    "id": "santa",
+    "name": "santa-face",
+    "labels": {
+      "en": "Santa Face",
+      "zh": "圣诞老人"
+    }
+  },
+  {
+    "id": "elf",
+    "name": "elf-hat",
+    "labels": {
+      "en": "Elf Hat",
+      "zh": "精灵帽"
+    }
+  },
+  {
+    "id": "sleigh",
+    "name": "sleigh",
+    "labels": {
+      "en": "Sleigh",
+      "zh": "雪橇"
+    }
+  },
+  {
+    "id": "mistletoe",
+    "name": "mistletoe",
+    "labels": {
+      "en": "Mistletoe",
+      "zh": "槲寄生"
+    }
+  },
+  {
+    "id": "holly",
+    "name": "holly-branch",
+    "labels": {
+      "en": "Holly Branch",
+      "zh": "冬青枝"
+    }
+  },
+  {
+    "id": "poinsettia",
+    "name": "poinsettia",
+    "labels": {
+      "en": "Poinsettia",
+      "zh": "一品红"
+    }
+  },
+  {
+    "id": "globe",
+    "name": "snow-globe",
+    "labels": {
+      "en": "Snow Globe",
+      "zh": "雪花球"
+    }
+  },
+  {
+    "id": "candle",
+    "name": "candle",
+    "labels": {
+      "en": "Candle",
+      "zh": "蜡烛"
+    }
+  },
+  {
+    "id": "lights",
+    "name": "christmas-lights",
+    "labels": {
+      "en": "Christmas Lights",
+      "zh": "圣诞灯串"
+    }
+  },
+  {
+    "id": "ornament",
+    "name": "ornament-ball",
+    "labels": {
+      "en": "Ornament Ball",
+      "zh": "挂饰球"
+    }
+  },
+  {
+    "id": "star",
+    "name": "christmas-star",
+    "labels": {
+      "en": "Christmas Star",
+      "zh": "圣诞星"
+    }
+  },
+  {
+    "id": "gingerbread",
+    "name": "gingerbread-man",
+    "labels": {
+      "en": "Gingerbread Man",
+      "zh": "姜饼人"
+    }
+  },
+  {
+    "id": "mittens",
+    "name": "mittens",
+    "labels": {
+      "en": "Mittens",
+      "zh": "手套"
+    }
+  },
+  {
+    "id": "cocoa",
+    "name": "hot-chocolate",
+    "labels": {
+      "en": "Hot Chocolate",
+      "zh": "热巧克力"
+    }
+  },
+  {
+    "id": "bells",
+    "name": "jingle-bells",
+    "labels": {
+      "en": "Jingle Bells",
+      "zh": "铃铛"
+    }
+  },
+  {
+    "id": "house",
+    "name": "snowy-house",
+    "labels": {
+      "en": "Snowy House",
+      "zh": "雪屋"
+    }
+  },
+  {
+    "id": "lollipop",
+    "name": "lollipop",
+    "labels": {
+      "en": "Lollipop",
+      "zh": "棒棒糖"
+    }
+  },
+  {
+    "id": "calendar",
+    "name": "advent-calendar",
+    "labels": {
+      "en": "Advent Calendar",
+      "zh": "降临节日历"
+    }
+  },
+  {
+    "id": "cracker",
+    "name": "christmas-cracker",
+    "labels": {
+      "en": "Christmas Cracker",
+      "zh": "圣诞拉炮"
+    }
+  },
+  {
+    "id": "bow",
+    "name": "christmas-bow",
+    "labels": {
+      "en": "Christmas Bow",
+      "zh": "蝴蝶结"
+    }
+  },
+  {
+    "id": "fireplace",
+    "name": "fireplace",
+    "labels": {
+      "en": "Fireplace",
+      "zh": "壁炉"
+    }
+  },
+  {
+    "id": "campfire",
+    "name": "campfire",
+    "labels": {
+      "en": "Campfire",
+      "zh": "篝火"
+    }
+  },
+  {
+    "id": "yule",
+    "name": "yule-log",
+    "labels": {
+      "en": "Yule Log",
+      "zh": "圣诞原木"
+    }
+  },
+  {
+    "id": "ornament-red",
+    "name": "ornament-red",
+    "labels": {
+      "en": "Ornament (Red)",
+      "zh": "红色装饰球"
+    }
+  },
+  {
+    "id": "ornament-green",
+    "name": "ornament-green",
+    "labels": {
+      "en": "Ornament (Green)",
+      "zh": "绿色装饰球"
+    }
+  },
+  {
+    "id": "ornament-gold",
+    "name": "ornament-gold",
+    "labels": {
+      "en": "Ornament (Gold)",
+      "zh": "金色装饰球"
+    }
+  },
+  {
+    "id": "ornament-blue",
+    "name": "ornament-blue",
+    "labels": {
+      "en": "Ornament (Blue)",
+      "zh": "蓝色装饰球"
+    }
+  },
+  {
+    "id": "ornament-purple",
+    "name": "ornament-purple",
+    "labels": {
+      "en": "Ornament (Purple)",
+      "zh": "紫色装饰球"
+    }
+  },
+  {
+    "id": "cookie",
+    "name": "christmas-cookie",
+    "labels": {
+      "en": "Christmas Cookie",
+      "zh": "圣诞曲奇"
+    }
+  },
+  {
+    "id": "carolers",
+    "name": "carolers",
+    "labels": {
+      "en": "Carolers",
+      "zh": "圣诞合唱团"
+    }
+  },
+  {
+    "id": "heart",
+    "name": "holiday-heart",
+    "labels": {
+      "en": "Holiday Heart",
+      "zh": "节日爱心"
+    }
+  },
+  {
+    "id": "wand",
+    "name": "magic-wand",
+    "labels": {
+      "en": "Magic Wand",
+      "zh": "魔法棒"
+    }
+  },
+  {
+    "id": "emoji-hat",
+    "name": "emoji-santa-hat",
+    "labels": {
+      "en": "Smiley (Santa Hat)",
+      "zh": "笑脸（圣诞帽）"
+    }
+  }
+]

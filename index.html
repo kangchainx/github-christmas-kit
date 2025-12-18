@@ -198,6 +198,12 @@
 			                    clear: 'Clear',
 			                    empty: 'No matching icons.',
 			                },
+						pagination: {
+						    prev: 'Previous page',
+						    next: 'Next page',
+						    page: 'Page {current} / {total}',
+						    pageNum: 'Go to page {page}',
+						},
 		                tooltip: {
 		                    help: 'How to use',
 		                    github: 'Open GitHub repo',
@@ -321,6 +327,12 @@ Return only the SVG code (no markdown). Keep it self-contained (no external asse
 			                    clear: '清空',
 			                    empty: '没有匹配的图标。',
 			                },
+						pagination: {
+						    prev: '上一页',
+						    next: '下一页',
+						    page: '第 {current} / {total} 页',
+						    pageNum: '跳转到第 {page} 页',
+						},
 		                tooltip: {
 		                    help: '使用说明',
 		                    github: '打开 GitHub 仓库',
@@ -448,59 +460,56 @@ Return only the SVG code (no markdown). Keep it self-contained (no external asse
 	        const formatTemplate = (template, vars = {}) =>
 	            template.replace(/\{(\w+)\}/g, (_, name) => (vars[name] ?? `{${name}}`));
 
-        // --- Data: SVG Collection ---
-        const CHRISTMAS_ICONS = [
-            {
-                id: 'tree',
-                name: 'christmas-tree',
-                path: '<path d="M32 4L14 24H24L12 40H22L8 56H56L42 40H52L32 16V4Z" fill="#22c55e" stroke="white" stroke-width="2" stroke-linejoin="round"/><rect x="26" y="56" width="12" height="8" fill="#78350f" />'
-            },
-            {
-                id: 'gift',
-                name: 'gift-box',
-                path: '<rect x="12" y="24" width="40" height="32" rx="4" fill="#ef4444" stroke="white" stroke-width="2"/><rect x="28" y="24" width="8" height="32" fill="#fbbf24"/><path d="M20 24C20 16 32 16 32 24C32 16 44 16 44 24" fill="none" stroke="#fbbf24" stroke-width="4"/>'
-            },
-            {
-                id: 'snowman',
-                name: 'snowman',
-                path: '<circle cx="32" cy="20" r="10" fill="#f8fafc" stroke="white" stroke-width="2"/><circle cx="32" cy="44" r="14" fill="#f8fafc" stroke="white" stroke-width="2"/><circle cx="32" cy="40" r="2" fill="#0f172a"/><circle cx="32" cy="48" r="2" fill="#0f172a"/><path d="M22 44L12 36" stroke="#78350f" stroke-width="2"/><path d="M42 44L52 36" stroke="#78350f" stroke-width="2"/><rect x="24" y="8" width="16" height="4" fill="#0f172a"/><rect x="26" y="4" width="12" height="8" fill="#0f172a"/>'
-            },
-            {
-                id: 'stocking',
-                name: 'red-stocking',
-                path: '<path d="M20 8H44V28C44 42 40 46 40 46L44 52C44 52 40 58 32 58H20C12 58 12 48 12 48V8Z" fill="#ef4444" stroke="white" stroke-width="2"/><rect x="18" y="8" width="28" height="10" fill="white" rx="2"/>'
-            },
-            {
-                id: 'bell',
-                name: 'jingle-bell',
-                path: '<path d="M32 8C20 8 16 24 16 36H48C48 24 44 8 32 8Z" fill="#fbbf24" stroke="white" stroke-width="2"/><circle cx="32" cy="54" r="6" fill="#fbbf24" stroke="white" stroke-width="2"/><path d="M32 8V4" stroke="white" stroke-width="2"/>'
-            },
-            {
-                id: 'candy',
-                name: 'candy-cane',
-                path: '<path d="M24 56V24C24 14 30 8 38 8C46 8 50 14 50 20" stroke="#ef4444" stroke-width="10" stroke-linecap="round"/><path d="M24 56V24C24 14 30 8 38 8C46 8 50 14 50 20" stroke="white" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 8"/>'
-            },
-            {
-                id: 'hat',
-                name: 'santa-hat',
-                path: '<path d="M12 48H52C52 48 48 16 32 8C16 16 12 48 12 48Z" fill="#ef4444" stroke="white" stroke-width="2"/><circle cx="52" cy="48" r="6" fill="white"/><circle cx="32" cy="6" r="6" fill="white"/><rect x="10" y="46" width="44" height="10" rx="5" fill="white"/>'
-            },
-	            {
-	                id: 'wreath',
-	                name: 'wreath',
-	                path: '<circle cx="32" cy="32" r="20" fill="none" stroke="#22c55e" stroke-width="8"/><circle cx="32" cy="12" r="4" fill="#ef4444"/><circle cx="52" cy="32" r="4" fill="#ef4444"/><circle cx="32" cy="52" r="4" fill="#ef4444"/><circle cx="12" cy="32" r="4" fill="#ef4444"/><path d="M32 16L32 24" stroke="#ef4444" stroke-width="2"/>'
-	            },
-	            {
-	                id: 'reindeer',
-	                name: 'reindeer',
-		                path: '<defs><linearGradient id="fur" x1="0" y1="18" x2="0" y2="56"><stop offset="0" stop-color="#d97706"/><stop offset="1" stop-color="#a16207"/></linearGradient><linearGradient id="muzzle" x1="0" y1="34" x2="0" y2="56"><stop offset="0" stop-color="#fde68a"/><stop offset="1" stop-color="#fef3c7"/></linearGradient></defs><g fill="none" stroke="#fef3c7" stroke-width="2.2" stroke-linecap="round" opacity="0.95"><path d="M18 16C16 10 18 8 20 8C22 8 23 10 24 12C25 14 27 15 29 15"/><path d="M46 16C48 10 46 8 44 8C42 8 41 10 40 12C39 14 37 15 35 15"/></g><circle cx="32" cy="36" r="18" fill="url(#fur)" stroke="#fff" stroke-width="1.6"/><g fill="#a16207" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"><path d="M18 30L12 26L14 36Z"/><path d="M46 30L52 26L50 36Z"/></g><ellipse cx="32" cy="44" rx="12" ry="9" fill="url(#muzzle)" stroke="#fff" stroke-width="1.4"/><circle cx="26" cy="34" r="2" fill="#0f172a"><animate attributeName="r" values="2;2;0.1;2;2" keyTimes="0;0.48;0.52;0.56;1" dur="3s" repeatCount="indefinite"/></circle><circle cx="38" cy="34" r="2" fill="#0f172a"><animate attributeName="r" values="2;2;0.1;2;2" keyTimes="0;0.48;0.52;0.56;1" dur="3s" repeatCount="indefinite"/></circle><circle cx="32" cy="46" r="3.2" fill="#ef4444" stroke="#fff" stroke-width="1"><animate attributeName="r" values="3.2;3.7;3.2" dur="1.2s" repeatCount="indefinite"/></circle><circle cx="31" cy="45" r="1" fill="#fff" opacity="0.6"><animate attributeName="opacity" values="0.45;0.8;0.45" dur="1.2s" repeatCount="indefinite"/></circle><circle cx="32" cy="46" r="7" fill="#ef4444" opacity="0.15"><animate attributeName="opacity" values="0.08;0.18;0.08" dur="1.2s" repeatCount="indefinite"/></circle>'
-		            },
-	            {
-	                id: 'snowflake',
-	                name: 'snowflake',
-	                path: '<g transform-origin="32 32"><animateTransform attributeName="transform" type="rotate" values="0 32 32; 360 32 32" dur="6s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.6;1;0.6" dur="2.4s" repeatCount="indefinite"/><g fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.95"><path d="M32 10V54"/><path d="M10 32H54"/><path d="M16 16L48 48"/><path d="M48 16L16 48"/><path d="M32 10L28 14M32 10L36 14"/><path d="M32 54L28 50M32 54L36 50"/><path d="M10 32L14 28M10 32L14 36"/><path d="M54 32L50 28M54 32L50 36"/><path d="M16 16L16 22M16 16L22 16"/><path d="M48 48L48 42M48 48L42 48"/><path d="M48 16L42 16M48 16L48 22"/><path d="M16 48L22 48M16 48L16 42"/></g><circle cx="32" cy="32" r="3" fill="#e2e8f0" opacity="0.9"/></g>'
-	            }
-	        ];
+		// --- Data: SVG Icon Manifest ---
+		// Keep a built-in fallback so the page still works when opened via file://.
+		// When served over HTTP(S), we try to load assets/icons.json for easier updates.
+			const FALLBACK_ICON_MANIFEST = [
+				{ id: 'tree', name: 'christmas-tree', labels: { en: 'Christmas Tree', zh: '圣诞树' } },
+				{ id: 'gift', name: 'gift-box', labels: { en: 'Gift Box', zh: '礼物盒' } },
+				{ id: 'snowman', name: 'snowman', labels: { en: 'Snowman', zh: '雪人' } },
+				{ id: 'stocking', name: 'red-stocking', labels: { en: 'Red Stocking', zh: '圣诞袜' } },
+				{ id: 'bell', name: 'jingle-bell', labels: { en: 'Jingle Bell', zh: '铃铛' } },
+				{ id: 'candy', name: 'candy-cane', labels: { en: 'Candy Cane', zh: '拐杖糖' } },
+				{ id: 'hat', name: 'santa-hat', labels: { en: 'Santa Hat', zh: '圣诞帽' } },
+				{ id: 'wreath', name: 'wreath', labels: { en: 'Wreath', zh: '花环' } },
+				{ id: 'reindeer', name: 'reindeer', labels: { en: 'Reindeer', zh: '驯鹿' } },
+				{ id: 'snowflake', name: 'snowflake', labels: { en: 'Snowflake', zh: '雪花' } },
+				{ id: 'santa', name: 'santa-face', labels: { en: 'Santa Face', zh: '圣诞老人' } },
+				{ id: 'elf', name: 'elf-hat', labels: { en: 'Elf Hat', zh: '精灵帽' } },
+				{ id: 'sleigh', name: 'sleigh', labels: { en: 'Sleigh', zh: '雪橇' } },
+				{ id: 'mistletoe', name: 'mistletoe', labels: { en: 'Mistletoe', zh: '槲寄生' } },
+				{ id: 'holly', name: 'holly-branch', labels: { en: 'Holly Branch', zh: '冬青枝' } },
+				{ id: 'poinsettia', name: 'poinsettia', labels: { en: 'Poinsettia', zh: '一品红' } },
+				{ id: 'globe', name: 'snow-globe', labels: { en: 'Snow Globe', zh: '雪花球' } },
+				{ id: 'candle', name: 'candle', labels: { en: 'Candle', zh: '蜡烛' } },
+				{ id: 'lights', name: 'christmas-lights', labels: { en: 'Christmas Lights', zh: '圣诞灯串' } },
+				{ id: 'ornament', name: 'ornament-ball', labels: { en: 'Ornament Ball', zh: '挂饰球' } },
+				{ id: 'star', name: 'christmas-star', labels: { en: 'Christmas Star', zh: '圣诞星' } },
+				{ id: 'gingerbread', name: 'gingerbread-man', labels: { en: 'Gingerbread Man', zh: '姜饼人' } },
+				{ id: 'mittens', name: 'mittens', labels: { en: 'Mittens', zh: '手套' } },
+				{ id: 'cocoa', name: 'hot-chocolate', labels: { en: 'Hot Chocolate', zh: '热巧克力' } },
+				{ id: 'bells', name: 'jingle-bells', labels: { en: 'Jingle Bells', zh: '铃铛' } },
+				{ id: 'house', name: 'snowy-house', labels: { en: 'Snowy House', zh: '雪屋' } },
+				{ id: 'lollipop', name: 'lollipop', labels: { en: 'Lollipop', zh: '棒棒糖' } },
+				{ id: 'calendar', name: 'advent-calendar', labels: { en: 'Advent Calendar', zh: '降临节日历' } },
+				{ id: 'cracker', name: 'christmas-cracker', labels: { en: 'Christmas Cracker', zh: '圣诞拉炮' } },
+				{ id: 'bow', name: 'christmas-bow', labels: { en: 'Christmas Bow', zh: '蝴蝶结' } },
+				{ id: 'fireplace', name: 'fireplace', labels: { en: 'Fireplace', zh: '壁炉' } },
+				{ id: 'campfire', name: 'campfire', labels: { en: 'Campfire', zh: '篝火' } },
+				{ id: 'yule', name: 'yule-log', labels: { en: 'Yule Log', zh: '圣诞原木' } },
+				{ id: 'ornament-red', name: 'ornament-red', labels: { en: 'Ornament (Red)', zh: '红色装饰球' } },
+				{ id: 'ornament-green', name: 'ornament-green', labels: { en: 'Ornament (Green)', zh: '绿色装饰球' } },
+				{ id: 'ornament-gold', name: 'ornament-gold', labels: { en: 'Ornament (Gold)', zh: '金色装饰球' } },
+				{ id: 'ornament-blue', name: 'ornament-blue', labels: { en: 'Ornament (Blue)', zh: '蓝色装饰球' } },
+				{ id: 'ornament-purple', name: 'ornament-purple', labels: { en: 'Ornament (Purple)', zh: '紫色装饰球' } },
+				{ id: 'cookie', name: 'christmas-cookie', labels: { en: 'Christmas Cookie', zh: '圣诞曲奇' } },
+				{ id: 'carolers', name: 'carolers', labels: { en: 'Carolers', zh: '圣诞合唱团' } },
+				{ id: 'heart', name: 'holiday-heart', labels: { en: 'Holiday Heart', zh: '节日爱心' } },
+				{ id: 'wand', name: 'magic-wand', labels: { en: 'Magic Wand', zh: '魔法棒' } },
+				{ id: 'emoji-hat', name: 'emoji-santa-hat', labels: { en: 'Smiley (Santa Hat)', zh: '笑脸（圣诞帽）' } },
+			];
+
+		const ICONS_MANIFEST_URL = 'assets/icons.json';
 
         // --- Component: SnowEffect ---
         const SnowEffect = () => {
@@ -965,11 +974,12 @@ Return only the SVG code (no markdown). Keep it self-contained (no external asse
 
 		            const filePath = `assets/svg/${icon.name}.svg`;
 		            const url = `${baseUrl.replace(/\/$/, '')}/${icon.name}.svg`;
-		            const displayName =
-		                getI18nValue(lang, `icons.${icon.id}`) ||
-		                getI18nValue('en', `icons.${icon.id}`) ||
-		                icon.name.replace(/-/g, ' ');
-
+		            						    const displayName =
+						        icon.labels?.[lang] ||
+						        icon.labels?.en ||
+						        getI18nValue(lang, `icons.${icon.id}`) ||
+						        getI18nValue('en', `icons.${icon.id}`) ||
+						        icon.name.replace(/-/g, ' ');
 		            const actions = [
 		                { key: 'MARKDOWN', icon: 'ph ph-code-block', title: t('iconCard.copyMarkdown') },
 		                { key: 'URL', icon: 'ph ph-link-simple', title: t('iconCard.copyUrl') },
@@ -1288,7 +1298,7 @@ Return only the SVG code (no markdown). Keep it self-contained (no external asse
                                                     <li>在实验室中点击 “下载 .svg”，并给文件起个好名字（英文，例如 santa-hat.svg）。</li>
                                                     <li>Fork 本仓库。</li>
                                                     <li>将下载的 SVG 文件放入 <code className="bg-slate-800 px-1 rounded text-sm text-indigo-300">assets/svg/</code> 文件夹。</li>
-                                                    <li>（可选）在 index.html 的 icons 数组中添加你的图标信息（如果不熟悉代码，只需提交 SVG 文件，维护者会帮你添加）。</li>
+                                                    <li>（可选）在 <code className="bg-slate-800 px-1 rounded text-sm text-indigo-300">assets/icons.json</code> 中补充你的图标信息（如果不熟悉代码，只需提交 SVG 文件，维护者会帮你添加）。</li>
                                                     <li>提交 Pull Request！</li>
                                                 </ul>
                                             </div>
@@ -1363,7 +1373,7 @@ Return only the SVG code (no markdown). Keep it self-contained (no external asse
                                             <div>
                                                 <div className="text-white font-semibold mb-2">3) Open a PR</div>
                                                 <p className="text-slate-400">
-                                                    Optionally add the icon entry to the <code className="bg-slate-800/60 px-1.5 py-0.5 rounded">CHRISTMAS_ICONS</code> array in <code className="bg-slate-800/60 px-1.5 py-0.5 rounded">index.html</code>.
+                                                    Optionally add the icon entry to <code className="bg-slate-800/60 px-1.5 py-0.5 rounded">assets/icons.json</code> (icon manifest) so it shows up in the grid and search.
                                                 </p>
                                             </div>
                                         </div>
@@ -1445,7 +1455,83 @@ Return only the SVG code (no markdown). Keep it self-contained (no external asse
 		            );
 		        };
 
-			        // --- Main App Component ---
+			        // --- Component: PaginationBar ---
+const PaginationBar = ({ page, totalPages, onPageChange }) => {
+    const { t } = useContext(I18nContext);
+    if (!totalPages || totalPages <= 1) return null;
+
+    const clamp = (n) => Math.min(Math.max(1, n), totalPages);
+
+    const pages = (() => {
+        const maxButtons = 7;
+        if (totalPages <= maxButtons) return Array.from({ length: totalPages }, (_, i) => i + 1);
+
+        const windowSize = 1;
+        const items = [1];
+        const start = Math.max(2, page - windowSize);
+        const end = Math.min(totalPages - 1, page + windowSize);
+        if (start > 2) items.push('…');
+        for (let i = start; i <= end; i++) items.push(i);
+        if (end < totalPages - 1) items.push('…');
+        items.push(totalPages);
+        return items;
+    })();
+
+    return (
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 animate-slideIn">
+            <div className="text-sm text-slate-300">
+                {t('pagination.page', { current: page, total: totalPages })}
+            </div>
+
+            <div className="flex items-center gap-2">
+                <button
+                    type="button"
+                    disabled={page <= 1}
+                    onClick={() => onPageChange(clamp(page - 1))}
+                    className="app-tooltip w-10 h-10 inline-flex items-center justify-center rounded-xl bg-slate-800/40 hover:bg-slate-700/60 border border-slate-700/60 text-slate-200 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-slate-800/40"
+                    aria-label={t('pagination.prev')}
+                    data-tooltip={t('pagination.prev')}
+                >
+                    <i className="ph ph-caret-left text-lg"></i>
+                </button>
+
+                {pages.map((p, idx) =>
+                    typeof p === 'number' ? (
+                        <button
+                            key={p}
+                            type="button"
+                            onClick={() => onPageChange(clamp(p))}
+                            className={`app-tooltip w-10 h-10 inline-flex items-center justify-center rounded-xl border transition-colors ${
+                                p === page
+                                    ? 'bg-gradient-to-r from-green-600/80 to-emerald-600/80 border-green-400/30 text-white'
+                                    : 'bg-slate-800/30 hover:bg-slate-700/50 border-slate-700/60 text-slate-200'
+                            }`}
+                            aria-label={t('pagination.pageNum', { page: p })}
+                            data-tooltip={t('pagination.pageNum', { page: p })}
+                        >
+                            <span className="text-sm font-semibold">{p}</span>
+                        </button>
+                    ) : (
+                        <span key={`ellipsis-${idx}`} className="px-1 text-slate-500 select-none">…</span>
+                    )
+                )}
+
+                <button
+                    type="button"
+                    disabled={page >= totalPages}
+                    onClick={() => onPageChange(clamp(page + 1))}
+                    className="app-tooltip w-10 h-10 inline-flex items-center justify-center rounded-xl bg-slate-800/40 hover:bg-slate-700/60 border border-slate-700/60 text-slate-200 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-slate-800/40"
+                    aria-label={t('pagination.next')}
+                    data-tooltip={t('pagination.next')}
+                >
+                    <i className="ph ph-caret-right text-lg"></i>
+                </button>
+            </div>
+        </div>
+    );
+};
+
+// --- Main App Component ---
 			        const App = () => {
 			            const REPO_URL = 'https://github.com/kangchainx/github-christmas-kit';
 			            const REPO_HOME_URL = 'https://kangchainx.github.io/github-christmas-kit';
@@ -1481,21 +1567,61 @@ Return only the SVG code (no markdown). Keep it self-contained (no external asse
 
 			            const [view, setView] = useState('home'); // 'home' | 'guide'
 			            const [searchQuery, setSearchQuery] = useState('');
+							const [page, setPage] = useState(1);
 			            const [isUsageOpen, setIsUsageOpen] = useState(true);
 			            const [toast, setToast] = useState({ show: false, msg: '', type: 'success' });
 			            const [isStarPromptVisible, setIsStarPromptVisible] = useState(false);
 			            const starPromptTriggeredRef = useRef(false);
 
-			            const filteredIcons = useMemo(() => {
-		                const query = searchQuery.trim().toLowerCase();
-		                if (!query) return CHRISTMAS_ICONS;
-		                return CHRISTMAS_ICONS.filter((icon) => {
-		                    const enLabel = getI18nValue('en', `icons.${icon.id}`) || '';
-		                    const zhLabel = getI18nValue('zh', `icons.${icon.id}`) || '';
-		                    const haystack = `${icon.id} ${icon.name} ${enLabel} ${zhLabel}`.toLowerCase();
-		                    return haystack.includes(query);
-		                });
-		            }, [searchQuery]);
+
+			            const [icons, setIcons] = useState(() => FALLBACK_ICON_MANIFEST);
+
+			            useEffect(() => {
+			                if (location.protocol === 'file:') return;
+			                const controller = new AbortController();
+			                (async () => {
+			                    try {
+			                        const res = await fetch(ICONS_MANIFEST_URL, { cache: 'no-store', signal: controller.signal });
+			                        if (!res.ok) return;
+			                        const data = await res.json();
+			                        const list = Array.isArray(data) ? data : (Array.isArray(data?.icons) ? data.icons : null);
+			                        if (!list) return;
+			                        const cleaned = list
+			                            .filter((item) => item && typeof item.name === 'string')
+			                            .map((item) => ({
+			                                id: typeof item.id === 'string' && item.id ? item.id : item.name,
+			                                name: item.name,
+			                                labels: item.labels && typeof item.labels === 'object' ? item.labels : undefined,
+			                            }));
+			                        if (cleaned.length) setIcons(cleaned);
+			                    } catch {}
+			                })();
+			                return () => controller.abort();
+			            }, []);
+			            							useEffect(() => {
+							    setPage(1);
+							}, [searchQuery]);
+
+const filteredIcons = useMemo(() => {
+			                const query = searchQuery.trim().toLowerCase();
+			                if (!query) return icons;
+			                return icons.filter((icon) => {
+			                    const enLabel = icon.labels?.en || getI18nValue('en', `icons.${icon.id}`) || '';
+			                    const zhLabel = icon.labels?.zh || getI18nValue('zh', `icons.${icon.id}`) || '';
+			                    const haystack = `${icon.id} ${icon.name} ${enLabel} ${zhLabel}`.toLowerCase();
+			                    return haystack.includes(query);
+			                });
+			            }, [searchQuery, icons]);
+
+
+const ITEMS_PER_PAGE = 12;
+const totalPages = Math.max(1, Math.ceil(filteredIcons.length / ITEMS_PER_PAGE));
+const safePage = Math.min(Math.max(1, page), totalPages);
+
+const paginatedIcons = useMemo(() => {
+    const start = (safePage - 1) * ITEMS_PER_PAGE;
+    return filteredIcons.slice(start, start + ITEMS_PER_PAGE);
+}, [filteredIcons, safePage]);
 
 			            const showToast = (msg, type = 'success') => {
 			                setToast({ show: true, msg, type });
@@ -1664,10 +1790,12 @@ Return only the SVG code (no markdown). Keep it self-contained (no external asse
 
 			                                    <StarPromptBanner isVisible={isStarPromptVisible} repoUrl={REPO_URL} onClose={dismissStarPrompt} />
 
+											<PaginationBar page={safePage} totalPages={totalPages} onPageChange={setPage} />
+
 			                                    {/* Icon Grid */}
 			                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16 animate-slideIn">
 			                                        {filteredIcons.length ? (
-			                                            filteredIcons.map((icon) => (
+			                                            paginatedIcons.map((icon) => (
 			                                                <IconCard
 			                                                    key={icon.id}
 			                                                    icon={icon}
