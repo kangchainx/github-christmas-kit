@@ -1,3 +1,11 @@
+![GitHub Profile Christmas Kit](assets/hero.png)
+
+<div align="center">
+  <img src="https://img.shields.io/github/license/kangchainx/github-christmas-kit?style=flat&label=license&labelColor=555555&color=97CA00" alt="license" />
+  <img src="https://img.shields.io/github/stars/kangchainx/github-christmas-kit?style=flat&label=Stars&labelColor=555555&color=efefef&logo=github" alt="Stars" />
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=kangchainx.github-christmas-kit" alt="Visitors" />
+</div>
+
 # GitHub Profile Christmas Kit
 
 中文 | [English](README.md)
